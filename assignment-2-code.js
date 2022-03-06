@@ -1,5 +1,5 @@
 // FOR EACH //
-Array.prototype.myEach = function() {
+Array.prototype.myEach = function(callbackFn) {
     // Place your code here.
     for (let i = 0; i < this.length; i++) {   // "this" keyword refers to the array being called.
         if (this[i] === undefined) continue;
@@ -12,14 +12,43 @@ Array.prototype.myEach = function() {
   };
   
   // MAP //
-  Array.prototype.myMap = function() {
+  Array.prototype.myMap = function(callbackFn) {
     // Place your code here.
+    const newArray = [];
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        newArray.push(callbackFn(this[i], i, this));
+    }
+    return newArray;
   };
+
+  /*
+  let myArray = [32,23,43,56];
+  let doubled = myArray.map(x => {return x * 2;});
+  console.log(doubled);
+  let doubleds = myArray.myMap(x => {return x * 2;});
+  console.log(doubleds);
+  */
+
   
   // SOME //
-  Array.prototype.mySome = function() {
+  Array.prototype.mySome = function(callbackFn) {
     // Place your code here.
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        if (callbackFn(this[i], i, this)) {
+            return true;
+        }
+    }
+    return false;
   };
+
+  /*
+  let myArray = [32,23,43,56];
+  console.log(myArray.some(x => x === 32));
+  console.log(myArray.mySome(x => x === 32));
+  */
+
   
   // REDUCE //
   Array.prototype.myReduce = function() {
