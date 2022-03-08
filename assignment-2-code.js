@@ -63,6 +63,16 @@ Array.prototype.myEach = function(callbackFn) {
   // INDEXOF //
   Array.prototype.myIndexOf = function() {
     // Place your code here.
+    for (let i = 0; i < this.length; i++) {
+      if (this.includes(x)) {
+        if (this[i] === x) {
+          return i;
+        }
+      }
+      else {
+        return -1;
+      }
+    }
   };
   
   // PUSH //
