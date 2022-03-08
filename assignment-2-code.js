@@ -17,7 +17,7 @@ Array.prototype.myEach = function(callbackFn) {
     const newArray = [];
     for (let i = 0; i < this.length; i++) {
         if (this[i] === undefined) continue;
-        newArray.push(callbackFn(this[i], i, this));
+        newArray.push(callbackFn(this[i], i, this)); //use custom push function
     }
     return newArray;
   };
@@ -30,7 +30,6 @@ Array.prototype.myEach = function(callbackFn) {
   console.log(doubleds);
   */
 
-  
   // SOME //
   Array.prototype.mySome = function(callbackFn) {
     // Place your code here.
@@ -49,24 +48,37 @@ Array.prototype.myEach = function(callbackFn) {
   console.log(myArray.mySome(x => x === 32));
   */
 
-  
   // REDUCE //
   Array.prototype.myReduce = function() {
     // Place your code here.
   };
   
   // INCLUDES //
-  Array.prototype.myIncludes = function() {
+  Array.prototype.myIncludes = function(x) {
     // Place your code here.
+    for (let i = 0; i < this.length; i++) {
+      const inc = this[i];
+      if (inc === x) {
+        return true;
+      }
+    }
+    return false;
   };
+
+  /*
+  let myArray = [1,2,3,4,5];
+  console.log(myArray.myIncludes(1));
+  console.log(myArray.includes(0));
+  */
+
   
   // INDEXOF //
-  Array.prototype.myIndexOf = function() {
+  Array.prototype.myIndexOf = function(x) {
     // Place your code here.
   };
   
   // PUSH //
-  Array.prototype.myPush = function() {
+  Array.prototype.myPush = function(...args) {
     // Place your code here.
     let args_index = 0;  // Index of new element
     let length = this.length;   // Length of "this" array
@@ -79,10 +91,16 @@ Array.prototype.myEach = function(callbackFn) {
   };
   
   // LASTINDEXOF //
-  Array.prototype.myLastIndexOf = function() {
+  Array.prototype.myLastIndexOf = function(x) {
     // Place your code here.
   };
   
+  /*
+  let myArray = [9,8,7,6,5,7,5];
+  console.log(myArray.myLastIndexOf(10));
+  console.log(myArray.lastIndexOf(10));
+  */
+
   // KEYS //
   Object.myKeys = function() {
     // Place your code here.
