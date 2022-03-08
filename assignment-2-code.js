@@ -103,6 +103,16 @@ Array.prototype.myEach = function(callbackFn) {
   // LASTINDEXOF //
   Array.prototype.myLastIndexOf = function(x) {
     // Place your code here.
+    for (let i = this.length - 1; i > -1; i--) {
+      if (this.includes(x)) {
+        if (this[i] === x) {
+          return i;
+        }
+      }
+      else {
+        return -1;
+      }
+    }
   };
   
   /*
