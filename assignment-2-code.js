@@ -22,6 +22,8 @@ Array.prototype.myEach = function(callbackFn) {
     return newArray;
   };
 
+
+
   /*
   let myArray = [32,23,43,56];
   let doubled = myArray.map(x => {return x * 2;});
@@ -131,13 +133,29 @@ Array.prototype.myEach = function(callbackFn) {
   console.log(myArray.myLastIndexOf(10));
   console.log(myArray.lastIndexOf(10));
   */
-
+ 
   // KEYS //
-  Object.myKeys = function() {
+  Object.myKeys = function(x) {
     // Place your code here.
+    let array = [];
+    for(var key in x) {
+      array.push(key);
+    }
+    return array;
   };
-  
+
+  /*
+  const foo = {
+    a: 'somestring',
+    b: 42,
+    c: false
+  };
+
+  console.log(Object.keys(foo));
+  console.log(Object.myKeys(foo));
+  */
+
   // VALUES //
-  Object.myValues = function() {
+  Object.myValues = function(x) {
     // Place your code here.
   };
