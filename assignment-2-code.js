@@ -49,9 +49,20 @@ Array.prototype.myEach = function(callbackFn) {
   */
 
   // REDUCE //
-  Array.prototype.myReduce = function() {
+  Array.prototype.myReduce = function(callbackFn, initial) {
     // Place your code here.
+    let reduced = ( initial === undefined) ? this[0] : initial;
+    let start = (initial === undefined) ? 1 : 0
+    for (let i = start; i < this.length; i++) {
+      reduced = callbackFn(reduced, this[i])
+    }
+    return reduced;
   };
+
+  /*
+  console.log([1, 2, 3].myReduce((sum, curr) => sum - curr));
+  console.log([1, 2, 3].reduce((sum, curr) => sum - curr));
+  */
   
   // INCLUDES //
   Array.prototype.myIncludes = function(x) {
