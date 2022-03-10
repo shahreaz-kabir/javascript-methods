@@ -158,4 +158,20 @@ Array.prototype.myEach = function(callbackFn) {
   // VALUES //
   Object.myValues = function(x) {
     // Place your code here.
+    let array = [];
+    for(var key in x) {
+      array.push(x[key]);
+    }
+    return array;
   };
+
+  /*
+  const foo = {
+    a: 'somestring',
+    b: 42,
+    c: false
+  };
+
+  console.log(Object.values(foo));
+  console.log(Object.myValues(foo));
+  */
