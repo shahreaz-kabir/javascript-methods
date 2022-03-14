@@ -10,66 +10,34 @@ Array.prototype.myEach = function(callbackFn) {
         callbackFn(this[i], i, this);   // callbackFn is "console.log(x,i,myArray)" 
     }
   };
-  
-  // MAP //
-  Array.prototype.myMap = function(callbackFn) {
-    // Place your code here.
-    const newArray = [];
-    for (let i = 0; i < this.length; i++) {
-        if (this[i] === undefined) continue;
-        newArray.push(callbackFn(this[i], i, this)); //use custom push function
-    }
-    return newArray;
-  };
-
-
-
-  /*
-  let myArray = [32,23,43,56];
-  let doubled = myArray.map(x => {return x * 2;});
-  console.log(doubled);
-  let doubleds = myArray.myMap(x => {return x * 2;});
-  console.log(doubleds);
-  */
 
   // SOME //
   Array.prototype.mySome = function(callbackFn) {
     // Place your code here.
     for (let i = 0; i < this.length; i++) {
         if (this[i] === undefined) continue;
-        if (callbackFn(this[i], i, this)) {
+        if (callbackFn(this[i], i, this)) { //as the loop iterates checks to see if callbackFn enacted on element returns true
             return true;
         }
     }
     return false;
   };
 
-  /*
-  let myArray = [32,23,43,56];
-  console.log(myArray.some(x => x === 32));
-  console.log(myArray.mySome(x => x === 32));
-  */
-
   // REDUCE //
   Array.prototype.myReduce = function(callbackFn, initial) {
     // Place your code here.
-    let reduced = ( initial === undefined) ? this[0] : initial;
-    let start = (initial === undefined) ? 1 : 0
+    let reduced = ( initial === undefined) ? this[0] : initial;//ternary operator used to check if initial value param is present
+    let start = (initial === undefined) ? 1 : 0; //if initial value undefined set to 1 otherwise 0
     for (let i = start; i < this.length; i++) {
-      reduced = callbackFn(reduced, this[i])
+      reduced = callbackFn(reduced, this[i]) //sets reduced variable to output of callbackFn and initial/prev value
     }
     return reduced;
   };
-
-  /*
-  console.log([1, 2, 3].myReduce((sum, curr) => sum - curr));
-  console.log([1, 2, 3].reduce((sum, curr) => sum - curr));
-  */
   
   // INCLUDES //
   Array.prototype.myIncludes = function(x) {
     // Place your code here.
-    for (let i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.length; i++) { //if element detected in array returns true
       const inc = this[i];
       if (inc === x) {
         return true;
@@ -78,18 +46,11 @@ Array.prototype.myEach = function(callbackFn) {
     return false;
   };
 
-  /*
-  let myArray = [1,2,3,4,5];
-  console.log(myArray.myIncludes(1));
-  console.log(myArray.includes(0));
-  */
-
-  
   // INDEXOF //
   Array.prototype.myIndexOf = function(x) {
     // Place your code here.
-    for (let i = 0; i < this.length; i++) {
-      if (this.includes(x)) {
+    for (let i = 0; i < this.length; i++) { //iterates through array until element found, then returns true otherwise false
+      if (this.myIncludes(x)) {
         if (this[i] === x) {
           return i;
         }
@@ -116,62 +77,45 @@ Array.prototype.myEach = function(callbackFn) {
   // LASTINDEXOF //
   Array.prototype.myLastIndexOf = function(x) {
     // Place your code here.
-    for (let i = this.length - 1; i > -1; i--) {
-      if (this.includes(x)) {
-        if (this[i] === x) {
+    for (let i = this.length - 1; i > -1; i--) { //for loop iterates through array from the back
+      if (this.myIncludes(x)) { //checks to see if element is in the array
+        if (this[i] === x) { //when element is found returns the index
           return i;
         }
       }
       else {
-        return -1;
+        return -1; //if elelemnt not found returns -1
       }
     }
   };
-  
-  /*
-  let myArray = [9,8,7,6,5,7,5];
-  console.log(myArray.myLastIndexOf(10));
-  console.log(myArray.lastIndexOf(10));
-  */
  
   // KEYS //
   Object.myKeys = function(x) {
     // Place your code here.
-    let array = [];
-    for(var key in x) {
-      array.push(key);
+    let array = []; //creates empty array to store keys
+    for(var key in x) { //iterates through keys in object x
+      array.myPush(key); //pushes key into empty array
     }
     return array;
   };
-
-  /*
-  const foo = {
-    a: 'somestring',
-    b: 42,
-    c: false
-  };
-
-  console.log(Object.keys(foo));
-  console.log(Object.myKeys(foo));
-  */
 
   // VALUES //
   Object.myValues = function(x) {
     // Place your code here.
-    let array = [];
-    for(var key in x) {
-      array.push(x[key]);
+    let array = []; //creates empty array to store values
+    for(var key in x) { //iterates through keys of object x
+      array.myPush(x[key]); //accesses element using key as an index and pushes element into empty array
     }
     return array;
   };
 
-  /*
-  const foo = {
-    a: 'somestring',
-    b: 42,
-    c: false
+  // MAP //
+  Array.prototype.myMap = function(callbackFn) {
+    // Place your code here.
+    const newArray = []; //creates empty array to store output of callbackFn
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        newArray.myPush(callbackFn(this[i], i, this)); //pushes the element post callbackFn into new array
+    }
+    return newArray;
   };
-
-  console.log(Object.values(foo));
-  console.log(Object.myValues(foo));
-  */
